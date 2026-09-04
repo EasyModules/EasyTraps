@@ -1,0 +1,199 @@
+<form class="easy-traps-advanced" autocomplete="off">
+  <header class="et-advanced-hero">
+    <div class="et-advanced-hero-icon"><i class="fa-solid fa-magnifying-glass-location"></i></div>
+    <div>
+      <small>{{subtitle}}</small>
+      <h1>Find & Disarm</h1>
+      <p>Configure how this trap can be noticed and safely disabled.</p>
+    </div>
+  </header>
+
+  <label class="et-advanced-master">
+    <span>
+      <i class="fa-solid fa-eye"></i>
+      <span><b>Enable discovery & disarming</b><small>Stores discovery and disarm rules on this trap.</small></span>
+    </span>
+    <input type="checkbox" name="enabled" {{checked enabled}}>
+  </label>
+
+  <div class="et-advanced-body" data-advanced-body>
+    <section class="et-advanced-section">
+      <header>
+        <span class="et-advanced-step">1</span>
+        <span><b>Detection</b><small>Perception can use automatic Passive Perception; Investigation remains manual/GM-driven.</small></span>
+      </header>
+
+      <div class="et-advanced-grid et-advanced-grid-3">
+        <label class="et-advanced-field">
+          <span>Detection DC</span>
+          <input type="number" name="detectionDC" min="1" max="99" step="1" value="{{detectionDC}}">
+        </label>
+        <label class="et-advanced-field et-advanced-field-wide">
+          <span>Detection skill</span>
+          <select name="detectionSkill">
+            <option value="perception" {{#if detectionPerception}}selected{{/if}}>Wisdom (Perception)</option>
+            <option value="investigation" {{#if detectionInvestigation}}selected{{/if}}>Intelligence (Investigation)</option>
+          </select>
+        </label>
+        <label class="et-advanced-field">
+          <span>Detection range</span>
+          <div class="et-advanced-number"><input type="number" name="detectionDistance" min="0" max="999" step="5" value="{{detectionDistance}}"><b>ft</b></div>
+        </label>
+      </div>
+
+      <div class="et-advanced-toggle-grid">
+        <label class="et-advanced-toggle">
+          <span><i class="fa-solid fa-person-circle-check"></i><span><b>Automatic Passive Perception</b><small>Uses the Passive Perception value already calculated by D&D5e. Available only for Perception.</small></span></span>
+          <input type="checkbox" name="passiveDiscovery" {{checked passiveDiscovery}}>
+        </label>
+        <label class="et-advanced-toggle">
+          <span><i class="fa-solid fa-eye-low-vision"></i><span><b>Require line of sight</b><small>Walls and closed sight-blocking barriers must not obstruct the trap.</small></span></span>
+          <input type="checkbox" name="requireLOS" {{checked requireLOS}}>
+        </label>
+        <label class="et-advanced-toggle">
+          <span><i class="fa-solid fa-pause"></i><span><b>Pause when discovered</b><small>Pause the game when automatic discovery succeeds.</small></span></span>
+          <input type="checkbox" name="pauseOnDiscovery" {{checked pauseOnDiscovery}}>
+        </label>
+      </div>
+    </section>
+
+    <section class="et-advanced-section">
+      <header>
+        <span class="et-advanced-step">2</span>
+        <span><b>Disarming</b><small>How a revealed trap can be disabled.</small></span>
+      </header>
+
+      <div class="et-advanced-grid et-advanced-grid-2">
+        <label class="et-advanced-field">
+          <span>Disarm DC</span>
+          <input type="number" name="disarmDC" min="1" max="99" step="1" value="{{disarmDC}}">
+        </label>
+        <div class="et-advanced-static-field">
+          <span>Disarm check</span>
+          <b>Dexterity (Sleight of Hand)</b>
+        </div>
+      </div>
+
+      <div class="et-disarm-options-grid">
+        <label class="et-advanced-toggle et-advanced-toggle-single">
+          <span><i class="fa-solid fa-award"></i><span><b>Require Sleight of Hand proficiency</b><small>Optional stricter restriction. Off by default.</small></span></span>
+          <input type="checkbox" name="requireDisarmProficiency" {{checked requireDisarmProficiency}}>
+        </label>
+
+        <div class="et-required-item-card {{#if requiredToolIsDefault}}is-default{{/if}}" data-required-tool-card data-required-tool-drop>
+          <label class="et-required-item-check" title="Require the selected item to attempt this disarm">
+            <input type="checkbox" name="requireRequiredItem" {{checked requireRequiredItem}}>
+          </label>
+          <div class="et-required-item-drag" draggable="true" data-required-tool-drag data-uuid="{{requiredToolUuid}}" title="Drag this Item to a character sheet">
+            <img data-required-tool-img src="{{requiredToolImg}}" alt="">
+            <span>
+              <b data-required-tool-name>{{requiredToolName}}</b>
+              <small data-required-tool-hint>Drop another Item here to replace it · drag this item to a character sheet.</small>
+            </span>
+          </div>
+          <button type="button" class="et-required-item-reset" data-action="reset-required-tool" title="Restore Thieves' Tools" {{#if requiredToolIsDefault}}disabled{{/if}}>
+            <i class="fa-solid fa-rotate-left"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="et-advanced-section">
+      <header>
+        <span class="et-advanced-step">3</span>
+        <span><b>Disarm Attempt</b><small>Limits and consequences for each attempt.</small></span>
+      </header>
+
+      <div class="et-advanced-toggle-grid">
+        <label class="et-advanced-toggle">
+          <span><i class="fa-solid fa-user-lock"></i><span><b>One attempt per character</b><small>Attempts are tracked by Actor rather than Token.</small></span></span>
+          <input type="checkbox" name="oneAttemptPerActor" {{checked oneAttemptPerActor}}>
+        </label>
+
+        <label class="et-advanced-toggle">
+          <span><i class="fa-solid fa-dice-d20"></i><span><b>Natural 1 triggers the trap</b><small>Optional house rule. Off by default.</small></span></span>
+          <input type="checkbox" name="naturalOneTriggers" {{checked naturalOneTriggers}}>
+        </label>
+
+        <label class="et-advanced-toggle">
+          <span><i class="fa-solid fa-star"></i><span><b>Always disarm on critical</b><small>Optional house rule. A natural 20 disarms the trap even when the total is below the DC. Off by default.</small></span></span>
+          <input type="checkbox" name="alwaysDisarmOnCritical" {{checked alwaysDisarmOnCritical}}>
+        </label>
+
+        <label class="et-advanced-toggle">
+          <span><i class="fa-solid fa-eye"></i><span><b>Show Disarm DC on result card</b><small>Off by default. When disabled, players see their total and outcome without the trap's DC.</small></span></span>
+          <input type="checkbox" name="showDcInChat" {{checked showDcInChat}}>
+        </label>
+      </div>
+
+      <div class="et-danger-row">
+        <label class="et-advanced-toggle et-danger-toggle">
+          <span><i class="fa-solid fa-triangle-exclamation"></i><span><b>Dangerous failure</b><small>Optional consequence for a particularly poor failed attempt.</small></span></span>
+          <input type="checkbox" name="dangerousFailure" {{checked dangerousFailure}}>
+        </label>
+        <label class="et-advanced-threshold">
+          <span>Trigger on total ≤</span>
+          <input type="number" name="dangerousThreshold" min="0" max="{{dangerousThresholdMax}}" step="1" value="{{dangerousThreshold}}">
+        </label>
+      </div>
+    </section>
+
+    {{#if canConfigureTriggerBehavior}}
+    <section class="et-advanced-section et-trigger-behavior-section">
+      <header>
+        <span class="et-advanced-step">4</span>
+        <span><b>Trigger behavior</b><small>What EasyTraps does when this trap is activated.</small></span>
+      </header>
+
+      <label class="et-advanced-toggle et-advanced-toggle-single">
+        <span><i class="fa-solid fa-pause"></i><span><b>Pause when triggered</b><small>Pause immediately before the trap spell begins resolving. Independent from discovery pause.</small></span></span>
+        <input type="checkbox" name="pauseOnTrigger" {{checked pauseOnTrigger}}>
+      </label>
+    </section>
+    {{/if}}
+
+    {{#if canClearHistory}}
+    <section class="et-advanced-section et-attempt-history-section">
+      <header>
+        <span class="et-advanced-step">5</span>
+        <span><b>Attempt history</b><small>Persistent per-Actor attempts. Rearming clears this history.</small></span>
+      </header>
+
+      {{#if hasAttemptHistory}}
+      <div class="et-attempt-history-list">
+        {{#each attemptHistory}}
+        <div class="et-attempt-history-row {{#if success}}is-success{{else}}{{#if triggered}}is-triggered{{else}}is-failure{{/if}}{{/if}}">
+          <span class="et-attempt-history-icon"><i class="fa-solid {{#if success}}fa-circle-check{{else}}{{#if triggered}}fa-burst{{else}}fa-circle-xmark{{/if}}{{/if}}"></i></span>
+          <span class="et-attempt-history-main"><b>{{actorName}}</b><small>{{status}} · {{count}} attempt(s)</small></span>
+          <span class="et-attempt-history-roll"><b>{{total}}</b><small>{{#if naturalD20}}d20 {{naturalD20}}{{else}}total{{/if}}</small></span>
+        </div>
+        {{/each}}
+      </div>
+      <button type="button" class="et-clear-history" data-action="clear-attempt-history"><i class="fa-solid fa-eraser"></i> Clear attempt history</button>
+      {{else}}
+      <div class="et-attempt-history-empty"><i class="fa-regular fa-circle-check"></i><span><b>No attempts yet</b><small>No recorded disarm attempts in the current armed cycle.</small></span></div>
+      {{/if}}
+    </section>
+    {{/if}}
+
+    <aside class="et-advanced-rules-note">
+      <i class="fa-solid fa-book-open"></i>
+      <span><b>SRD 5.2.1 baseline</b><small>The physical item requirement is optional. Drop any Item onto the item card to use it for this trap; reset restores Thieves' Tools.</small></span>
+    </aside>
+  </div>
+
+  <footer class="et-advanced-footer">
+    <div class="et-footer-left">
+      <button type="button" class="et-cancel" data-action="close"><i class="fa-solid fa-xmark"></i> Cancel</button>
+      <button type="button" class="et-restore" data-action="restore-defaults" title="Load the SRD 5.2.1 EasyTraps factory baseline into this form"><i class="fa-solid fa-rotate-left"></i> Restore defaults</button>
+    </div>
+    <div class="et-footer-right">
+      {{#if canApplyAll}}
+      <button type="button" class="et-apply-all" data-action="apply-all" title="Apply every configurable setting on this page to every trap in this scene and save them as defaults for new traps">
+        <i class="fa-solid fa-layer-group"></i> Apply to all
+      </button>
+      {{/if}}
+      <button type="submit" class="et-primary" title="Apply these settings only to this trap"><i class="fa-solid fa-check"></i> Apply</button>
+    </div>
+  </footer>
+</form>
