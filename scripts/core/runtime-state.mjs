@@ -1,0 +1,50 @@
+
+
+export const runtime = {
+  triggering: new Set(),
+  discovering: new Set(),
+  placing: false,
+  overlays: new Map(),
+  areaOverlays: new Map(),
+  cancelPlacement: null,
+  spellPackCache: null,
+  sceneManager: null,
+  playerTrapInteraction: {
+    installed: false,
+    hoveredTileId: null,
+    overlay: null,
+    disarmControl: null,
+    disarmControlTileId: null,
+    disarmControlHovered: false,
+    disarmControlHideTimer: null,
+    lastPointerPoint: null,
+    moveHandler: null,
+    disarmBusy: false,
+    pendingRequestId: null,
+    activeLockId: null,
+    activeLockTileId: null,
+    activeLockSceneId: null,
+    lockedTrapIds: new Set()
+  },
+  disarmSocketInstalled: false,
+  pendingDisarmRequests: new Map(),
+  pendingDisarmPreflights: new Map(),
+  disarmGmLocks: new Set(),
+  disarmInteractionLocks: new Map(),
+  cancelledDisarmPreflights: new Map(),
+  gmAuthorityResumeInstalled: false,
+  discoveryVisionRecheckTimer: null,
+  discoveryVisionRecheckRunning: false,
+  discoveryVisionRecheckAgain: false,
+  itemPileHookInstalled: false,
+  itemPileInteractionDedupe: new Map(),
+  sourceLinkRepairs: new Set(),
+  pendingSourceDeletions: new Map(),
+  unitWarnings: new Set(),
+  alarmCooldownUntil: new Map(),
+  gmAlarmRangePreview: {
+    installed: false,
+    hoveredTileId: null,
+    moveHandler: null
+  }
+};

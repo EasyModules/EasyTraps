@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.1
+
+- Extracted runtime responsibilities from `main.mjs` into `core`, `triggers`, `payloads`, `ui`, and `integrations`, preserving all 409 original function bodies, settings, flags and hook registrations.
+- Replaced factory wiring with explicit, acyclic ES-module imports and a small synchronous presentation boundary; kept native spell execution and the existing UI.
+- Added executable regression checks with Foundry API doubles, a fixed original-source contract and architecture documentation in `docs/ARCHITECTURE.md`.
+- Verified the release in Foundry VTT 14.367 with D&D 5e 6.0.3.
+- Made EasyModules Hub an optional recommended integration. EasyTraps continues to expose its managed macros, native configuration, and public API without the Hub.
+
 ## 1.0.0 — First Public Release
 
 - First official public release of EasyTraps.

@@ -25,7 +25,7 @@ The trigger, origin, discovery, disarm, rearm, deletion, Door, and Item Pile inf
 - Configurable single-use or repeatable behavior, dangerous failures, natural-1 activation, and optional critical disarm success.
 - Scene Manager with Spell/Alarm filtering, safe editing, rearming, disarming, revealing, hiding, and detailed trap inspection.
 - Scene-unit-safe range handling for imperial and metric scenes.
-- Centralized configuration through the EasyModules Hub and Foundry Module Settings.
+- Configuration through Foundry Module Settings, with optional EasyModules Hub integration.
 
 ### Spell Trap
 
@@ -51,9 +51,9 @@ The trigger, origin, discovery, disarm, rearm, deletion, Door, and Item Pile inf
 
 ## Requirements
 
-- Foundry Virtual Tabletop v14 (verified on v14.365)
-- `dnd5e` system 5.3.3
-- EasyModules Hub 1.0.6 or newer
+- Foundry Virtual Tabletop v14 (verified on v14.367)
+- `dnd5e` system 5.3.3 or newer (verified on 6.0.3)
+- EasyModules Hub 1.0.8 or newer (optional)
 - Monk's Active Tile Triggers 14.01 or newer
 
 ### Optional integrations
@@ -71,7 +71,7 @@ Install the current public EasyTraps release through Foundry VTT using this mani
 https://github.com/EasyModules/EasyTraps/releases/latest/download/module.json
 ```
 
-Enable **EasyModules Hub**, **Monk's Active Tile Triggers**, and **EasyTraps** in a `dnd5e` world. Enable optional integrations only if you want their corresponding features.
+Enable **Monk's Active Tile Triggers** and **EasyTraps** in a `dnd5e` world. EasyModules Hub is optional and adds centralized access when enabled. Enable other optional integrations only if you want their corresponding features.
 
 For manual installation, extract the module archive so the manifest is located at:
 
@@ -88,7 +88,7 @@ EasyTraps creates or updates two world macros for the GM:
 
 ### Create a Spell Trap
 
-1. Run **EasyTraps — Create Spell Trap** or launch the Spell Trap action from the EasyModules Hub.
+1. Run **EasyTraps — Create Spell Trap** or launch the Spell Trap action from the EasyModules Hub when it is enabled.
 2. Select a spell and, when necessary, the exact Activity to use.
 3. Configure Spell Slot or Caster Level, save DC, attack bonus, origin, target policy, and trap behavior.
 4. Choose the trigger source: **Tile**, **Door**, or **Item Pile**.
@@ -226,7 +226,7 @@ A dangerous disarm failure activates the configured payload: the spell for a Spe
 
 EasyTraps Configuration is available through both:
 
-- **EasyModules Hub → EasyTraps → Configure**
+- **EasyModules Hub → EasyTraps → Configure** (when enabled)
 - **Game Settings → Configure Settings → Module Settings → EasyTraps Configuration**
 
 Configuration includes shared trigger/origin artwork and the Spell Trap creation defaults that are useful across the world. Alarm-specific sound choices are intentionally stored per trap so users can select different files for different alarms.
@@ -274,10 +274,10 @@ Hooks.on("easyTrapsAlarmTriggered", data => {
 
 ## Compatibility
 
-EasyTraps `1.0.0` is the first public release and is intended for Foundry VTT v14 with:
+EasyTraps `1.0.1` supports Foundry VTT v14 with:
 
-- Foundry Virtual Tabletop 14.365
-- `dnd5e` 5.3.3
+- Foundry Virtual Tabletop 14.367
+- `dnd5e` 6.0.3
 - Monk's Active Tile Triggers 14.01
 - Item Piles 3.3.x for optional Item Pile trigger sources
 

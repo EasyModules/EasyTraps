@@ -2,7 +2,7 @@
   "id": "easy-traps",
   "title": "EasyTraps",
   "description": "Create configurable 5E Spell Traps and Alarm Traps with Tile, Door, and Item Pile trigger sources, shared discovery and disarming, native spell execution, positional audio, and optional integrations.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "authors": [
     {
       "name": "EasyModules",
@@ -11,7 +11,7 @@
   ],
   "compatibility": {
     "minimum": "14",
-    "verified": "14.365"
+    "verified": "14.367"
   },
   "relationships": {
     "systems": [
@@ -20,19 +20,11 @@
         "type": "system",
         "compatibility": {
           "minimum": "5.3.3",
-          "verified": "5.3.3"
+          "verified": "6.0.3"
         }
       }
     ],
     "requires": [
-      {
-        "id": "easy-modules",
-        "type": "module",
-        "compatibility": {
-          "minimum": "1.0.6"
-        },
-        "manifest": "https://github.com/EasyModules/EasyModules/releases/latest/download/module.json"
-      },
       {
         "id": "monks-active-tiles",
         "type": "module",
@@ -42,6 +34,14 @@
       }
     ],
     "recommends": [
+      {
+        "id": "easy-modules",
+        "type": "module",
+        "compatibility": {
+          "minimum": "1.0.8"
+        },
+        "manifest": "https://github.com/EasyModules/EasyModules/releases/latest/download/module.json"
+      },
       {
         "id": "easy-fix",
         "type": "module"
@@ -67,7 +67,7 @@
   "license": "LICENSE",
   "url": "https://github.com/EasyModules/EasyTraps",
   "manifest": "https://github.com/EasyModules/EasyTraps/releases/latest/download/module.json",
-  "download": "https://github.com/EasyModules/EasyTraps/releases/download/v1.0.0/easy-traps.zip",
+  "download": "https://github.com/EasyModules/EasyTraps/releases/download/v1.0.1/easy-traps.zip",
   "bugs": "https://github.com/EasyModules/EasyTraps/issues",
   "protected": false
 }

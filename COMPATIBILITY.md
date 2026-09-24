@@ -1,16 +1,17 @@
-# EasyTraps 1.0.0 Compatibility Assessment
+# EasyTraps 1.0.1 Compatibility Assessment
 
 ## Scope
 
-This document records the supported environment, integration boundaries, known risks, and minimum regression checks for the EasyTraps 1.0.0 public release.
+This document records the supported environment, integration boundaries, known risks, and minimum regression checks for the EasyTraps 1.0.1 public release.
 
 ## Verified baseline environment
 
-- Foundry Virtual Tabletop 14.365
-- `dnd5e` 5.3.3
+- Foundry Virtual Tabletop 14.367
+- `dnd5e` 6.0.3
 - Monk's Active Tile Triggers 14.01
 - Item Piles 3.3.x for optional Item Pile trigger sources
 - Compatible EasyFix public Multi-Hit API validated during release testing
+- EasyModules Hub 1.0.8+ is optional; managed macros and native module settings remain available without it.
 
 ## Supported topology
 
